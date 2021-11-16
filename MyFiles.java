@@ -8,10 +8,10 @@ public class MyFiles{
 	
 	private final String path = "C:\\Users\\Admin\\eclipse-workspace\\CompanyLocker\\Files\\";
 	
-	public File create(String file_nm){
-		String fl_nm = path + file_nm +".txt";
-		File fs = new File(fl_nm);
-			try {
+	public void create(String file_nm){
+		try {
+			String fl_nm = path + file_nm +".txt";
+			File fs = new File(fl_nm);
 				if(fs.createNewFile()){
 					System.out.println("Created File in : "+ fs.getAbsolutePath());					
 				}
@@ -21,15 +21,14 @@ public class MyFiles{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return fs;
 	}
 	
 	public void add(String file_nm){
-	   File fl = create(file_nm);
-
+		create(file_nm);
 	}
 	
 	 void delete(String file_nm){
+		 file_nm = file_nm + ".txt";
 		 String full_path = path + file_nm;
 		 File fs = new File(full_path);
 		 File f = new File(path);
@@ -44,7 +43,8 @@ public class MyFiles{
 		 else System.out.println("File not found");
 	}
 	public void search(String file_nm){
-		 File f = new File(path);
+		file_nm = file_nm + ".txt"; 
+		File f = new File(path);
 		 String fl_nms[] = f.list();
 		 boolean flag = false;
 		 for(String nm :fl_nms) {
